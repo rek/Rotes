@@ -1,0 +1,9 @@
+rek_rotes:
+    resource: "@REKRotesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+rek_user:
+    resource: "@REKUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
