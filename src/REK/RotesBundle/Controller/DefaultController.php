@@ -14,6 +14,17 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        return array('form' => '');
+        // return array('form' => $form);
+    }
+
+    /**
+     * @Route("/edit/{id}")
+     * /@Method({"GET", "POST"})
+     * @Template()
+     */
+    public function editAction($id, $method)
+    {
         return array('form' => $form);
     }
 }

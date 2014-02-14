@@ -1,6 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets '@REKRotesBundle/Resources/less/styles.less' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}ROTES{% endblock %}
+
+{% block body %}
+
 swt. stage one done
 
 ----
 
+{% image '@REKRotesBundle/Resources/public/images/badass.jpg' filter='jpegoptim' %}
+    <img src="{{ asset_url }}" alt="Awesome" />
+{% endimage %}
 
-{{ form(form) }}
+{{ form }}
+
+
+{% endblock %}

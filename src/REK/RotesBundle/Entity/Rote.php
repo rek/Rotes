@@ -1,27 +1,38 @@
 <?php
-// src/REK/RoteBundle/Entity/Rote.php
 
-namespace REK\RoteBundle\Entity;
+namespace REK\RotesBundle\Entity;
 
-use REK\RoteBundle\Model\Rote as BaseRote;
+use REK\RotesBundle\Model\Rote as BaseRote;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Rote
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="rote")
  */
 class Rote extends BaseRote
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text")
+     */
+    protected $message;
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
+
 }
