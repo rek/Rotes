@@ -17,6 +17,13 @@ namespace REK\RotesBundle\Model;
 abstract class Rote implements RoteInterface
 {
 
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $message;
+
     /**
      * Get id
      *
