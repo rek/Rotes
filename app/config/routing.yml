@@ -6,7 +6,7 @@ rek_rotes:
 rek_user:
     resource: "@REKUserBundle/Controller/"
     type:     annotation
-    prefix:   /secured
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

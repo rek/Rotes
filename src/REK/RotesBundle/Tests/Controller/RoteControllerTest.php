@@ -4,8 +4,9 @@ namespace REK\RotesBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class RoteControllerTest extends WebTestCase
 {
+
     public function testIndex()
     {
         $client = static::createClient();

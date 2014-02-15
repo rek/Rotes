@@ -24,6 +24,10 @@ abstract class Rote implements RoteInterface
      */
     protected $message;
 
+    public function __construct()
+    {
+    }
+
     /**
      * Get id
      *
