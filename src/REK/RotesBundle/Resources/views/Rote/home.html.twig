@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+  <h1>Welcome home.</h1>
+
+  <ul>
+      {% for rote in rotes if rote.id %}
+          <li>
+            <a href="{{ path('rote_show', {'id': rote.id}) }}">
+              {{ rote.id }}
+            </a>
+          </li>
+      {% else %}
+          <li>No ROTES man!</li>
+      {% endfor %}
+  </ul>
+
+{% endblock %}
