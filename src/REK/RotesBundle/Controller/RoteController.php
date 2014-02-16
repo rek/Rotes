@@ -4,6 +4,8 @@ namespace REK\RotesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -17,7 +19,7 @@ class RoteController extends Controller
      * @Route("{id}", name="rote_show")
      * @Template()
      */
-    public function indexAction(Rote $rote)
+    public function indexAction(Rote $rote, Request $request)
     {
         // $rote = $this->getDoctrine()
         // ->getRepository('REK\RotesBundle\Entity\Rote')
@@ -36,6 +38,15 @@ class RoteController extends Controller
 
         // use the rote service:
         $form = $this->createForm('rote', $rote);
+
+        // does validation if posted:
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($rote);
+            $em->flush();
+        }
 
         return array(
             'rote' => $rote,
