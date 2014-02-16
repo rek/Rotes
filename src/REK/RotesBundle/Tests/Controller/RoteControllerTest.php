@@ -7,13 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class RoteControllerTest extends WebTestCase
 {
 
-    public function testIndex()
+    public function testHomepage()
+    {
+
+    }
+
+    public function testDefaultContentIndex()
     {
         $client = static::createClient();
+        $crawler = $client->request('GET', '/1');
+        $this->assertTrue($crawler->filter('html:contains("This is the default message.")')->count() > 0);
+    }
 
-        $crawler = $client->request('GET', '/hello/Fabien');
-
-        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
 
 // $link = $crawler->filter('a:contains("Greet")')->eq(1)->link();
 
@@ -33,5 +38,4 @@ class RoteControllerTest extends WebTestCase
     // '/Hello Fabien/',
     // $client->getResponse()->getContent()
 // );
-
 }

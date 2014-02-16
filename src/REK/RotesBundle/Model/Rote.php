@@ -61,4 +61,10 @@ abstract class Rote implements RoteInterface
         return $this->message;
     }
 
+
+    public function getReverseMessage()
+    {
+        return strrev($this->message);
+    }
+
 }
