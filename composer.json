@@ -27,6 +27,9 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
 
         "leafo/lessphp": "dev-master",
+        "craue/formflow-bundle": "~2.0",
+
+        // not used
         "braincrafted/bootstrap-bundle": "dev-master",
         "twbs/bootstrap": "2.3.*"
     },

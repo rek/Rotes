@@ -1,8 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}ROTES{% endblock %}
+
 {% block body %}
 
-  <h1>Welcome home.</h1>
+  <h1>Current rotes:</h1>
 
   <ul>
       {% for rote in rotes if rote.id %}

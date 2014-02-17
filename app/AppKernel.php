@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new REK\UserBundle\REKUserBundle(),
             new REK\RotesBundle\REKRotesBundle(),
+            new Craue\FormFlowBundle\CraueFormFlowBundle(),
+            new REK\DocwizBundle\REKDocwizBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

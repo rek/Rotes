@@ -68,11 +68,11 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/new", name="new")
      * /@Method({"GET", "POST"})
      * @Template()
      */
-    public function editAction($id, $method)
+    public function newAction($id, $method)
     {
         return array('form' => $form);
     }

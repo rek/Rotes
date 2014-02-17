@@ -1,3 +1,8 @@
+rek_docwiz:
+    resource: "@REKDocwizBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 rek_rotes:
     resource: "@REKRotesBundle/Controller/"
     type:     annotation
