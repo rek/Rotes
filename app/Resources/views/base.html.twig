@@ -12,6 +12,9 @@
 
     </head>
     <body>
+        <div class="main-menu">
+            {{ knp_menu_render('REKRotesBundle:Builder:mainMenu') }}
+        </div>
         <div class="main">
             {% block body %}{% endblock %}
         </div>

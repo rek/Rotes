@@ -17,11 +17,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new REK\UserBundle\REKUserBundle(),
-            new REK\RotesBundle\REKRotesBundle(),
-            new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new REK\DocwizBundle\REKDocwizBundle(),
+            new REK\RotesBundle\REKRotesBundle(),
+            new REK\UserBundle\REKUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Craue\FormFlowBundle\CraueFormFlowBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

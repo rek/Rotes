@@ -1,0 +1,12 @@
+parameters:
+
+services:
+    rek.docwiz.form.type.doc:
+        class: REK\DocwizBundle\Form\Type\DocType
+        tags:
+            - { name: form.type, alias: doc }
+
+    rek.docwiz.form.type.flow.createDoc:
+        class: REK\DocwizBundle\Form\Type\DocTypeFlow
+        parent: craue.form.flow
+        scope: request

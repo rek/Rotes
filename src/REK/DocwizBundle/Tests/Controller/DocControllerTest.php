@@ -4,7 +4,7 @@ namespace REK\DocwizBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class DocControllerTest extends WebTestCase
 {
     public function testIndex()
     {
