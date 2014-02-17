@@ -6,7 +6,7 @@
 
   <h1>Current rotes:</h1>
 
-  <ul>
+  <ul class="rotes">
       {% for rote in rotes if rote.id %}
           <li>
             <a href="{{ path('rote_show', {'id': rote.id}) }}">

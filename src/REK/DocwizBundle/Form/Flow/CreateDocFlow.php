@@ -10,6 +10,8 @@ use Craue\FormFlowBundle\Form\FormFlowInterface;
 
 class CreateDocFlow extends FormFlow {
 
+    protected $allowDynamicStepNavigation = true;
+
     protected function loadStepsConfig() {
         return array(
             array(
