@@ -16,7 +16,20 @@ class RoteController extends Controller
 {
 
     /**
-     * @Route("{id}", name="rote_show")
+     * @Route("/", name="home")
+     * @Template()
+     */
+    public function homeAction()
+    {
+        $rotes = $this->getDoctrine()
+        ->getRepository('REK\RotesBundle\Entity\Rote')
+        ->findAll();
+
+        return array('rotes' => $rotes);
+    }
+
+    /**
+     * @Route("{id}", name="rote_show", requirements={"id" = "\d+"})
      * @Template()
      */
     public function indexAction(Rote $rote, Request $request)
@@ -52,19 +65,6 @@ class RoteController extends Controller
             'rote' => $rote,
             'form' => $form->createView()
         );
-    }
-
-    /**
-     * @Route("/", name="home")
-     * @Template()
-     */
-    public function homeAction()
-    {
-        $rotes = $this->getDoctrine()
-        ->getRepository('REK\RotesBundle\Entity\Rote')
-        ->findAll();
-
-        return array('rotes' => $rotes);
     }
 
     /**
