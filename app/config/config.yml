@@ -31,7 +31,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ "REKRotesBundle"]
+    bundles:        [ "REKRotesBundle", 'REKDocwizBundle' ]
     #java: /usr/bin/java
     filters:
         jpegoptim:

@@ -8,11 +8,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 class DocStep2Type extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $validValues = array(2, 4);
-        $builder->add('name', 'text');
-        $builder->add('temp', 'form_type_vehicleEngine', array(
-            'empty_value' => '',
-        ));
+        $builder->add('field', 'text');
+        // $validValues = array(2, 4);
+        // $builder->add('temp', 'form_type_vehicleEngine', array(
+            // 'empty_value' => '',
+        // ));
     }
 
     public function getName() {

@@ -18,7 +18,7 @@ class DocController extends Controller
     public function createDocAction() {
         $formData = new Doc();
 
-        $flow = $this->get('rek.docwiz.form.type.flow.createDoc');
+        $flow = $this->get('rek.docwiz.form.flow.createDoc');
         $flow->bind($formData);
 
         // form of the current step

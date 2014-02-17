@@ -1,8 +1,12 @@
+{% extends '::base.html.twig' %}
+
 {% block stylesheets %}
   {% stylesheets '@CraueFormFlowBundle/Resources/assets/css/buttons.css' %}
       <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
   {% endstylesheets %}
 {% endblock %}
+
+{% block body %}
 
 <div>
     Steps:
@@ -13,8 +17,8 @@
 
     {% if flow.getCurrentStepNumber() == 1 %}
         <div>
-            When selecting four wheels you have to choose the engine in the next step.<br />
-            {{ form_row(form.numberOfWheels) }}
+            When selecting a field type you have to select content also.<br />
+            {{ form_row(form.name) }}
         </div>
     {% endif %}
 
@@ -22,3 +26,5 @@
 
     {% include 'CraueFormFlowBundle:FormFlow:buttons.html.twig' %}
 </form>
+
+{% endblock %}

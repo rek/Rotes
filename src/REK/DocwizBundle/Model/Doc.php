@@ -4,13 +4,14 @@
  * This file is part of Docwiz
  *
  * It holds the business logic for this object
- * It is mapped to ORM via its entity
+ * This is mapped to ORM via its entity
  */
 
 namespace REK\DocwizBundle\Model;
 
 // use Doctrine\Common\Collections\Collection;
 // use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  */
@@ -26,6 +27,7 @@ abstract class Doc implements DocInterface
 
     /**
      * @var string
+     * @Assert\Length(min=2, groups={"flow_createDoc_step1"})
      */
     protected $name;
 
