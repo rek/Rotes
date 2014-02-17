@@ -4,6 +4,7 @@
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
+/app/coverage
 /vendor/
 /app/config/parameters.yml
 *.sublime-*
