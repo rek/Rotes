@@ -1,14 +1,16 @@
-rotes. some notes. by rek
+Rotes. Some notes.
 ========================
 
 Welcome to Rotes.
 
-It's just a place for some notes.
+It is a place for notes.
 
-This is also my learning project for symfony2
+This project was inspired by my desire to learn Symfony2
 
 
-1) Also get the mobile app...
+Plan:
+
+1) Implement all the SF2 func I can think of
 ----------------------------------
 
-That is .. when I make it
+
