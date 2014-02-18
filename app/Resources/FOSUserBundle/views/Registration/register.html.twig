@@ -1,0 +1,15 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+  {% if false == is_granted("ROLE_USER") %}
+
+      {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+
+  {% else %}
+
+      You have already registered.
+
+  {% endif %}
+
+{% endblock fos_user_content %}

@@ -1,0 +1,6 @@
+services:
+    user_reg_page_redirect:
+        class: REK\UserBundle\EventListener\RegisterPageListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }

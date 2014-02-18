@@ -14,8 +14,13 @@ class Builder extends ContainerAware
         $menu->addChild('Home', array('route' => 'home'));
         $menu->addChild('Create Form', array('route' => 'doc_create'));
 
-        $menu->addChild('Login', array('route' => 'fos_user_security_login'));
-        $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
+        if (!$options['authenticated']) {
+            $menu->addChild('Login', array('route' => 'fos_user_security_login'));
+            $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
+        } else {
+            $menu->addChild('My Profile', array('route' => 'fos_user_profile_show'));
+            $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
+        }
 
         // $menu->addChild('About Me', array(
             // 'route' => 'page_show',

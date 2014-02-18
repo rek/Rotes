@@ -13,7 +13,10 @@
     </head>
     <body>
         <div class="main-menu">
-            {{ knp_menu_render('REKRotesBundle:Builder:mainMenu') }}
+
+            {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:mainMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
+            {{ knp_menu_render(mainMenu) }}
+
         </div>
         <div class="main">
             {% block body %}{% endblock %}

@@ -20,8 +20,10 @@ class REKDocwizExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
+        // the configs are validated here:
         $config = $this->processConfiguration($configuration, $configs);
 
+        // now we can use the config and know its safe (if we validated)
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
