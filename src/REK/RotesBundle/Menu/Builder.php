@@ -11,15 +11,25 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'home'));
-        $menu->addChild('Create Form', array('route' => 'doc_create'));
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $pages = $em->getRepository('REK\RotesBundle\Entity\Page')
+            // ->useResultCache(true, 360)
+            ->findAll()
+        ;
 
-        if (!$options['authenticated']) {
-            $menu->addChild('Login', array('route' => 'fos_user_security_login'));
-            $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
-        } else {
-            $menu->addChild('My Profile', array('route' => 'fos_user_profile_show'));
-            $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
+        // sort pages by order
+
+
+        foreach ($pages as $page) {
+            if (
+                    // show all pages if we are authed and page is not set to hidden (login page is set to hidden to authed users)
+                    ($options['authenticated'] && false !== $page->getIsSecured())
+                ||
+                    // if we are un authed, do not show secure stuff.
+                    (!$options['authenticated'] && true !== $page->getIsSecured())
+            ) {
+                $menu->addChild($page->getName(), array('route' => $page->getRoute()));
+            }
         }
 
         // $menu->addChild('About Me', array(

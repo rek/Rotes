@@ -14,7 +14,7 @@ namespace REK\RotesBundle\Model;
 
 /**
  */
-abstract class Rote implements RoteInterface
+abstract class Page
 {
 
     protected $id;
@@ -22,15 +22,10 @@ abstract class Rote implements RoteInterface
     /**
      * @var string
      */
-    protected $message;
+    protected $name;
 
     public function __construct()
     {
-    }
-
-    public function getReverseMessage()
-    {
-        return strrev($this->message);
     }
 
 }

@@ -20,6 +20,7 @@ abstract class Doc implements DocInterface
 
     protected $id;
 
+
     /**
      * @var string
      */

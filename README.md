@@ -5,12 +5,12 @@ Welcome to Rotes.
 
 It is a place for notes.
 
+== History
+
 This project was inspired by my desire to learn Symfony2
 
+Origionally was just a simple todo list holder.
 
-Plan:
+But quickly morphed into a place to store all my code snippits and things.
 
-1) Implement all the SF2 func I can think of
-----------------------------------
-
-
+Just for fun :)

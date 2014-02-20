@@ -6,10 +6,11 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    // "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
-        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/orm": "2.3.*",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
@@ -20,15 +21,24 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        //db stuff
+        // cmf db
+        // "jackalope/jackalope-doctrine-dbal": "dev-master",
+        // "doctrine/phpcr-bundle": "1.0.*",
+        // "doctrine/phpcr-odm": "1.0.*",
+        // main db
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
 
+        // "symfony-cmf/symfony-cmf": "1.0.*",
+
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "leafo/lessphp": "dev-master",
+        // "leafo/scssphp-compass": "dev-master",
         "craue/formflow-bundle": "~2.0",
         "knplabs/knp-menu":"dev-master",
+
+        // now included by symfony cmf above
         "knplabs/knp-menu-bundle":"dev-master",
 
         // not used

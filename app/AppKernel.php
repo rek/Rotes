@@ -22,7 +22,17 @@ class AppKernel extends Kernel
             new REK\UserBundle\REKUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
+
+            // new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            // new Symfony\Cmf\Bundle\CoreBundle\CmfCoreBundle(),
+            // new Symfony\Cmf\Bundle\MenuBundle\CmfMenuBundle(),
+            // new Symfony\Cmf\Bundle\ContentBundle\CmfContentBundle(),
+            // new Symfony\Cmf\Bundle\BlockBundle\CmfBlockBundle(),
+            // Dependencies of the CmfBlockBundle
+            // new Sonata\BlockBundle\SonataBlockBundle(),
+
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
