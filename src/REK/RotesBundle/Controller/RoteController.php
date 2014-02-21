@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -62,22 +63,34 @@ class RoteController extends Controller
         }
 
         return array(
-            'rote' => $rote,
             'form' => $form->createView()
         );
     }
 
     /**
-     * @Route("/rote_create", name="create")
-     * /@Method({"GET", "POST"})
-     * @Template()
+     * @Route("/rote_create", name="rote_create")
+     * @Method({"GET", "POST"})
+     * @Template("REKRotesBundle:Rote:index.html.twig")
      */
-    public function createAction($id, $method)
+    public function createAction(Request $request)
     {
-
         $rote = new Rote();
-        $form = $this->createForm(new RoteType(), $rote);
 
-        return array('form' => $form);
+        // use the rote service:
+        $form = $this->createForm('rote', $rote);
+
+        // bind the send data to the new rote entity
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form);
+            $em->flush();
+        }
+
+        return array(
+            'form' => $form->createView()
+        );
+
     }
 }
