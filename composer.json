@@ -12,7 +12,7 @@
         "symfony/symfony": "~2.4",
         "doctrine/orm": "2.3.*",
         "doctrine/doctrine-bundle": "~1.2",
-        "twig/extensions": "~1.0",
+        "twig/extensions": "1.*",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
@@ -33,18 +33,32 @@
         // "symfony-cmf/symfony-cmf": "1.0.*",
 
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "leafo/lessphp": "dev-master",
-        // "leafo/scssphp-compass": "dev-master",
         "craue/formflow-bundle": "~2.0",
         "knplabs/knp-menu":"dev-master",
-
-        // now included by symfony cmf above
         "knplabs/knp-menu-bundle":"dev-master",
 
-        // not used
-        "braincrafted/bootstrap-bundle": "dev-master",
-        "twbs/bootstrap": "2.3.*"
+        // styles
+        "leafo/lessphp": "dev-master",
+        // soon my friend, soon:
+        // "leafo/scssphp-compass": "dev-master",
+
+        "braincrafted/bootstrap-bundle": "~2.0@alpha",
+        "twbs/bootstrap": "3.*@dev",
+        "jquery/jquery":  "1.11.*"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.11.0",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.11.0.min.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

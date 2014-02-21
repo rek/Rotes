@@ -47,12 +47,16 @@ assetic:
         # sass:    ~
         # compass: ~
         lessphp:
-            apply_to: "\.less$"
+            apply_to: "\.lessphp$"
             # Formatter options: compressed, lessjs, classic
             formatter: "compressed"
             preserve_comments: false
             presets:
                 my_variable: "#000"
+        less:
+            node: /usr/bin/node
+            node_paths: [/home/rek/dev/node_modules]
+            apply_to: "\.less$"
 
 # Doctrine Configuration
 doctrine:
@@ -86,3 +90,12 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: REK\UserBundle\Entity\User
+
+braincrafted_bootstrap:
+    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.0.min.js
+    less_filter: less # "less", "lessphp" or "none"
+    auto_configure:
+        assetic: true
+        twig: true
+        knp_menu: true
+        knp_paginator: true

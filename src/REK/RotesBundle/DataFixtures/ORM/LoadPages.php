@@ -37,7 +37,7 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
             ),
             "fos_user_security_login" => array(
                 'name' => 'Login',
-                'isSecured' => false
+                'isSecured' => false // show only when logged out
             ),
             "fos_user_registration_register" => array(
                 'name' => 'Register',
@@ -45,7 +45,7 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
             ),
             "fos_user_profile_show" => array(
                 'name' => 'Profile',
-                'isSecured' => true
+                'isSecured' => true // show only when logged in
             ),
             "fos_user_security_logout" => array(
                 'name' => 'Logout',

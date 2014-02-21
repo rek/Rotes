@@ -2,25 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        {% stylesheets '@REKRotesBundle/Resources/less/styles.less' %}
+        <!-- Bootstrap -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+
+        {% stylesheets '@REKRotesBundle/Resources/less/styles.lessphp' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
+
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 
     </head>
     <body>
         <div class="main-menu">
-
             {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:mainMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
             {{ knp_menu_render(mainMenu) }}
-
         </div>
+
         <div class="main">
             {% block body %}{% endblock %}
         </div>
+
         {% block javascripts %}{% endblock %}
+
+        <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <!-- Include all JavaScripts, compiled by Assetic -->
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
     </body>
 </html>
