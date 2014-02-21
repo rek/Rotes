@@ -79,7 +79,6 @@ class Rote extends BaseRote
         return $this->message;
     }
 
-
     /**
      * Set page
      *
@@ -89,7 +88,7 @@ class Rote extends BaseRote
     public function setPage(\REK\RotesBundle\Entity\Page $page = null)
     {
         $this->page = $page;
-    
+
         return $this;
     }
 }

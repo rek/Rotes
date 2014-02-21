@@ -12,6 +12,7 @@ class RoteType extends AbstractType
     {
         $builder
             ->add('message', 'textarea')
+            ->add('page', new PageType());
             ->add('save', 'submit');
 
             // 'options' => array('translation_domain' => 'FOSUserBundle'),
@@ -22,7 +23,7 @@ class RoteType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'REK\RotesBundle\Model\Rote',
+            'data_class' => 'REK\RotesBundle\Entity\Rote',
         ));
     }
 

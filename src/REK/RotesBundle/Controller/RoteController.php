@@ -68,12 +68,16 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/new", name="new")
+     * @Route("/rote_create", name="create")
      * /@Method({"GET", "POST"})
      * @Template()
      */
-    public function newAction($id, $method)
+    public function createAction($id, $method)
     {
+
+        $rote = new Rote();
+        $form = $this->createForm(new RoteType(), $rote);
+
         return array('form' => $form);
     }
 }

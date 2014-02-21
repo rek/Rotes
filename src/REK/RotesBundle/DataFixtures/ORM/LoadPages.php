@@ -32,9 +32,6 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
             "home" => array(
                 'name' => 'Home'
             ),
-            "doc_create" => array(
-                'name' => 'Create Form'
-            ),
             "fos_user_security_login" => array(
                 'name' => 'Login',
                 'isSecured' => false // show only when logged out
@@ -46,6 +43,14 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
             "fos_user_profile_show" => array(
                 'name' => 'Profile',
                 'isSecured' => true // show only when logged in
+            ),
+            "doc_create" => array(
+                'name' => 'Create Doc',
+                'isSecured' => true
+            ),
+            "rote_create" => array(
+                'name' => 'Create Rote',
+                'isSecured' => true
             ),
             "fos_user_security_logout" => array(
                 'name' => 'Logout',
@@ -76,6 +81,6 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 1; // the order in which fixtures will be loaded
+        return 20; // the order in which fixtures will be loaded
     }
 }
