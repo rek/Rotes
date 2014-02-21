@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use REK\RotesBundle\Entity\Rote;
@@ -70,6 +71,7 @@ class RoteController extends Controller
     /**
      * @Route("/rote_create", name="rote_create")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      * @Template("REKRotesBundle:Rote:index.html.twig")
      */
     public function createAction(Request $request)
