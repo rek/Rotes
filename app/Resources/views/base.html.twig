@@ -8,9 +8,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         <!-- Bootstrap -->
-        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" media="screen">
 
-        {% stylesheets '@REKRotesBundle/Resources/less/styles.less' %}
+        {% stylesheets '@REKRotesBundle/Resources/less/*.less' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 

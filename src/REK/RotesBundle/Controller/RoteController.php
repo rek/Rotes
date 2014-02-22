@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use REK\RotesBundle\Entity\Rote;
+use REK\RotesBundle\Entity\Category;
 
 class RoteController extends Controller
 {
@@ -33,11 +34,12 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/rote/{id}", name="rote_show")
+     * @Route("/show/{slug}", name="rote_show")
+     * #, @ParamConverter("category", class="REKRotesBundle:Category", options={"slug" = "slug"})
      * #, requirements={"id" = "\d+"}
      * @Template()
      */
-    public function showAction(Rote $rote, Request $request)
+    public function showAction(Category $category, Request $request)
     {
         // $rote = $this->getDoctrine()
         // ->getRepository('REK\RotesBundle\Entity\Rote')
@@ -53,6 +55,13 @@ class RoteController extends Controller
         // remember to add:
         // use REK\RotesBundle\Form\Type\RoteType;
         // $form = $this->createForm(new RoteType(), $rote);
+
+        $rote = $category->getRotes()[0];
+
+        if (!$rote) {
+            $rote = new Rote();
+            $rote->setCategory($category);
+        }
 
         // use the rote service:
         $form = $this->createForm('rote', $rote);
@@ -77,7 +86,6 @@ class RoteController extends Controller
      */
     public function extraAction(Request $request)
     {
-        die('yay');
         return array(
             'form' => $form->createView()
         );

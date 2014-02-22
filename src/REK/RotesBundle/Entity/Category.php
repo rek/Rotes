@@ -5,6 +5,7 @@ namespace REK\RotesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use REK\RotesBundle\Model\Page as BaseCategory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -14,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Category
+class Category extends BaseCategory
 {
     /**
      * @var integer
@@ -23,14 +24,14 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      * @Assert\NotBlank(message="Category name must be set")
      * @ORM\Column(name="name", type="string", length=100)
      */
-    private $name;
+    protected $name;
 
     /**
      * @Gedmo\Translatable
@@ -70,6 +71,11 @@ class Category
 
         // doctrine requires the ArrayCollection
         $this->rotes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**
@@ -150,11 +156,6 @@ class Category
     {
         return $this->secure;
     }
-
-    // public function __toString()
-    // {
-        // return $this->getTitle();
-    // }
 
     /**
      * Get slug

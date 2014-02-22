@@ -53,7 +53,7 @@ class Builder extends ContainerAware
         foreach ($categories as $cat) {
             if ($this->okToShow($cat, $securityContext)) {
                 $menu->addChild($cat->getName(), array(
-                    'route' => 'rote_show_e',
+                    'route' => 'rote_show',
                     'routeParameters' => array('slug' => $cat->getSlug())
                 ));
             }

@@ -34,7 +34,4 @@ abstract class Page
 
     }
 
-    // public function __toString() {
-        // return $this->name;
-    // }
 }

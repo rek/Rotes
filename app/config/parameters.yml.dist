@@ -12,3 +12,8 @@ parameters:
     mailer_password: null
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
+
+# assetic:
+    # filters:
+        # less:
+            # node_paths: [/usr/lib/node_modules]
