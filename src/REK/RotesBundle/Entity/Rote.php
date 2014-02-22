@@ -4,6 +4,7 @@ namespace REK\RotesBundle\Entity;
 
 use REK\RotesBundle\Model\Rote as BaseRote;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Rote
@@ -30,20 +31,27 @@ class Rote extends BaseRote
     protected $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="rotes")
-     * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="rotes")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $page;
+    protected $category;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
-    }
-
-    public function getPage()
-    {
-        return $this->page;
     }
 
     /**
@@ -80,15 +88,71 @@ class Rote extends BaseRote
     }
 
     /**
-     * Set page
+     * Get updated
      *
-     * @param \REK\RotesBundle\Entity\Page $page
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \REK\RotesBundle\Entity\Category $category
      * @return Rote
      */
-    public function setPage(\REK\RotesBundle\Entity\Page $page = null)
+    public function setCategory(\REK\RotesBundle\Entity\Category $category = null)
     {
-        $this->page = $page;
+        $this->category = $category;
 
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \REK\RotesBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Rote
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Rote
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
         return $this;
     }
 }

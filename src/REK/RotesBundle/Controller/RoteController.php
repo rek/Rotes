@@ -23,11 +23,13 @@ class RoteController extends Controller
      */
     public function homeAction()
     {
-        $rotes = $this->getDoctrine()
+        $rote = $this->getDoctrine()
         ->getRepository('REK\RotesBundle\Entity\Rote')
-        ->findAll();
+        ->findOneBy(array(),array(
+            'updated' => 'asc'
+        ));
 
-        return array('rotes' => $rotes);
+        return array('rote' => $rote);
     }
 
     /**
@@ -35,7 +37,7 @@ class RoteController extends Controller
      * #, requirements={"id" = "\d+"}
      * @Template()
      */
-    public function indexAction(Rote $rote, Request $request)
+    public function showAction(Rote $rote, Request $request)
     {
         // $rote = $this->getDoctrine()
         // ->getRepository('REK\RotesBundle\Entity\Rote')
@@ -70,7 +72,7 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/rotee/{route}", name="rote_show_e")
+     * @Route("/rotee/{slug}", name="rote_show_e")
      * @Template("REKRotesBundle:Rote:index.html.twig")
      */
     public function extraAction(Request $request)

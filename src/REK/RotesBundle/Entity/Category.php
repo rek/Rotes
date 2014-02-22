@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Category
  *
@@ -58,10 +60,17 @@ class Category
     private $created;
 
     /**
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
+     * @ORM\OneToMany(targetEntity="Rote", mappedBy="category")
      */
-    private $updated;
+    protected $rotes;
+
+    public function __construct()
+    {
+        // parent::__construct();
+
+        // doctrine requires the ArrayCollection
+        $this->rotes = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -167,14 +176,63 @@ class Category
         return $this->created;
     }
 
+
     /**
-     * Get updated
+     * Set slug
      *
-     * @return \DateTime
+     * @param string $slug
+     * @return Category
      */
-    public function getUpdated()
+    public function setSlug($slug)
     {
-        return $this->updated;
+        $this->slug = $slug;
+
+        return $this;
     }
 
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Category
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Add rotes
+     *
+     * @param \REK\RotesBundle\Entity\Rote $rotes
+     * @return Category
+     */
+    public function addRote(\REK\RotesBundle\Entity\Rote $rotes)
+    {
+        $this->rotes[] = $rotes;
+
+        return $this;
+    }
+
+    /**
+     * Remove rotes
+     *
+     * @param \REK\RotesBundle\Entity\Rote $rotes
+     */
+    public function removeRote(\REK\RotesBundle\Entity\Rote $rotes)
+    {
+        $this->rotes->removeElement($rotes);
+    }
+
+    /**
+     * Get rotes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRotes()
+    {
+        return $this->rotes;
+    }
 }

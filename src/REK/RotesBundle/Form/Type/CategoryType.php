@@ -6,14 +6,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RoteType extends AbstractType
+class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message', 'textarea')
-            ->add('category', new CategoryType())
-            ->add('save', 'submit');
+            ->add('name', null, array(
+                'label' => false
+            ))
+            // ->add('parentId', 'hidden', array(
+                // 'data' => '0'
+            // ))
+        ;
 
             // 'options' => array('translation_domain' => 'FOSUserBundle'),
     }
@@ -23,13 +27,12 @@ class RoteType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'REK\RotesBundle\Entity\Rote',
-            'cascade_validation' => true, // <- also do the sub forms
+            'data_class' => 'REK\RotesBundle\Entity\Category+',
         ));
     }
 
     public function getName()
     {
-        return 'rote';
+        return 'category';
     }
 }

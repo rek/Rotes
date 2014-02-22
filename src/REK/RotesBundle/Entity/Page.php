@@ -5,8 +5,6 @@ namespace REK\RotesBundle\Entity;
 use REK\RotesBundle\Model\Page as BasePage;
 use Doctrine\ORM\Mapping as ORM;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Page
  *
@@ -42,7 +40,7 @@ class Page extends BasePage
      * @var boolean
      *
      * @ORM\Column(name="parentId", type="smallint")
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="id")
+     * ////@ORM\OneToMany(targetEntity="Page", mappedBy="id")
      */
     protected $parentId;
 
@@ -60,17 +58,10 @@ class Page extends BasePage
      */
     protected $position;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Rote", mappedBy="page")
-     */
-    protected $rotes;
-
     public function __construct()
     {
         parent::__construct();
 
-        // doctrine requires the ArrayCollection
-        $this->rotes = new ArrayCollection();
     }
 
     /**
@@ -153,39 +144,6 @@ class Page extends BasePage
     }
 
     /**
-     * Add rotes
-     *
-     * @param \REK\RotesBundle\Entity\Rote $rotes
-     * @return Page
-     */
-    public function addRote(\REK\RotesBundle\Entity\Rote $rotes)
-    {
-        $this->rotes[] = $rotes;
-
-        return $this;
-    }
-
-    /**
-     * Remove rotes
-     *
-     * @param \REK\RotesBundle\Entity\Rote $rotes
-     */
-    public function removeRote(\REK\RotesBundle\Entity\Rote $rotes)
-    {
-        $this->rotes->removeElement($rotes);
-    }
-
-    /**
-     * Get rotes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRotes()
-    {
-        return $this->rotes;
-    }
-
-    /**
      * Set parentId
      *
      * @param integer $parentId
@@ -217,14 +175,14 @@ class Page extends BasePage
     public function setSecure($secure)
     {
         $this->secure = $secure;
-    
+
         return $this;
     }
 
     /**
      * Get secure
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getSecure()
     {

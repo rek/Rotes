@@ -8,29 +8,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-                <h1 id="type">Current rotes</h1>
+                <h1 id="type">Recently</h1>
             </div>
         </div>
 
-        <!-- Headings -->
-
-    <div class="row">
         <div class="col-lg-4">
-            <ul class="rotes">
-                {% for rote in rotes if rote.id %}
-                    <li class="list-group">
-                        <a href="{{ path('rote_show', {'id': rote.id}) }}" class="list-group-item">
-                            {{ rote.id }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li>No ROTES man!</li>
-                {% endfor %}
-            </ul>
+            {{ rote.message }}
         </div>
     </div>
 
 </div>
-
 
 {% endblock %}

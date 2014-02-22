@@ -26,9 +26,9 @@ abstract class Rote implements RoteInterface
     protected $message;
 
     /**
-     * @Assert\Type(type="REK\RotesBundle\Entity\Page")
+     * @Assert\Type(type="REK\RotesBundle\Entity\Category")
      */
-    protected $page;
+    protected $category;
 
     public function __construct()
     {
@@ -39,4 +39,17 @@ abstract class Rote implements RoteInterface
         return strrev($this->message);
     }
 
+    /**
+    * NOT USED. using findByOne instead in controller
+    */
+    public function getMostRecent()
+    {
+        return $em->getRepository('REK\RotesBundle\Entity\Rote')
+            ->createQueryBuilder('p')
+            // ->useResultCache(true, 360)
+            ->orderBy('p.updated_at', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
 }
