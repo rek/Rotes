@@ -18,16 +18,17 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new REK\DocwizBundle\REKDocwizBundle(),
-            new REK\RotesBundle\REKRotesBundle(),
-            new REK\UserBundle\REKUserBundle(),
-
             new FOS\UserBundle\FOSUserBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+
+            // keep our bundles last so they override
+            new REK\DocwizBundle\REKDocwizBundle(),
+            new REK\RotesBundle\REKRotesBundle(),
+            new REK\UserBundle\REKUserBundle(),
 
             // new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             // new Symfony\Cmf\Bundle\CoreBundle\CmfCoreBundle(),
