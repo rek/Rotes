@@ -31,7 +31,8 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/rote/{id}", name="rote_show", requirements={"id" = "\d+"})
+     * @Route("/rote/{id}", name="rote_show")
+     * #, requirements={"id" = "\d+"}
      * @Template()
      */
     public function indexAction(Rote $rote, Request $request)

@@ -8,20 +8,6 @@ use REK\RotesBundle\Entity\Rote;
 
 class LoadRotesData extends AbstractFixture implements OrderedFixtureInterface
 {
-    // NOTE: if we want a container:
-    // use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-    // use Symfony\Component\DependencyInjection\ContainerInterface;
-    // implements ContainerAwareInterface
-    /**
-     * {@inheritDoc}
-     */
-    // public function setContainer(ContainerInterface $container = null)
-    // {
-        // $this->container = $container;
-    // }
-
-    // NOTE: to get refs
-    // $this->getReference('rote-1')
 
     /**
      * {@inheritDoc}

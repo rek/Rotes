@@ -49,9 +49,9 @@ class Page extends BasePage
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isSecured", type="boolean", nullable=true)
+     * @ORM\Column(name="secure", type="boolean", nullable=true)
      */
-    protected $isSecured;
+    private $secure;
 
     /**
      * @var integer
@@ -130,16 +130,6 @@ class Page extends BasePage
     }
 
     /**
-     * Get isSecured
-     *
-     * @return boolean
-     */
-    public function getIsSecured()
-    {
-        return $this->isSecured;
-    }
-
-    /**
      * Set position
      *
      * @param integer $position
@@ -196,20 +186,6 @@ class Page extends BasePage
     }
 
     /**
-     * Set isSecured
-     *
-     * @param boolean $isSecured
-     * @return Page
-     */
-    public function setIsSecured($isSecured)
-    {
-        $this->isSecured = $isSecured;
-
-        return $this;
-    }
-
-
-    /**
      * Set parentId
      *
      * @param integer $parentId
@@ -218,17 +194,40 @@ class Page extends BasePage
     public function setParentId($parentId)
     {
         $this->parentId = $parentId;
-    
+
         return $this;
     }
 
     /**
      * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
         return $this->parentId;
+    }
+
+    /**
+     * Set secure
+     *
+     * @param boolean $secure
+     * @return Page
+     */
+    public function setSecure($secure)
+    {
+        $this->secure = $secure;
+    
+        return $this;
+    }
+
+    /**
+     * Get secure
+     *
+     * @return boolean 
+     */
+    public function getSecure()
+    {
+        return $this->secure;
     }
 }

@@ -23,11 +23,12 @@
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="{{ path('home') }}" class="navbar-brand">rekarnar</a>
+                    <a href="{{ path('home') }}" class="navbar-brand">rekarnar: rotes</a>
                 </div>
                 <div id="navbar-main">
-                    {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:mainMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
+                    {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:pagesMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
                     {{ knp_menu_render(mainMenu) }}
+                    {{ knp_menu_render('REKRotesBundle:Builder:categoryMenu') }}
                 </div>
             </div>
         </div>

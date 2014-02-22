@@ -20,6 +20,9 @@ class LoadUsers extends AbstractFixture implements ContainerAwareInterface, Orde
         $this->container = $container;
     }
 
+    // NOTE: to get refs
+    // $this->getReference('rote-1')
+
     /**
      * {@inheritDoc}
      */

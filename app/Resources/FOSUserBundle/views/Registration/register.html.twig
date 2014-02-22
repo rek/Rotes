@@ -2,14 +2,28 @@
 
 {% block fos_user_content %}
 
-  {% if false == is_granted("ROLE_USER") %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h1 id="type">Register</h1>
+      </div>
+    </div>
 
-      {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    <div class="row">
+      <div class="col-lg-4">
 
-  {% else %}
+        {% if false == is_granted("ROLE_USER") %}
 
-      You have already registered.
+          {% include "FOSUserBundle:Registration:register_content.html.twig" %}
 
-  {% endif %}
+        {% else %}
+
+          You have already registered.
+
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
 
 {% endblock fos_user_content %}
