@@ -41,6 +41,14 @@ class Page extends BasePage
     /**
      * @var boolean
      *
+     * @ORM\Column(name="parentId", type="smallint")
+     * @ORM\OneToMany(targetEntity="Page", mappedBy="id")
+     */
+    protected $parentId;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="isSecured", type="boolean", nullable=true)
      */
     protected $isSecured;
@@ -61,10 +69,8 @@ class Page extends BasePage
     {
         parent::__construct();
 
+        // doctrine requires the ArrayCollection
         $this->rotes = new ArrayCollection();
-
-        // set a default
-        $this->setPosition(0);
     }
 
     /**
@@ -200,5 +206,29 @@ class Page extends BasePage
         $this->isSecured = $isSecured;
 
         return $this;
+    }
+
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return Page
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+    
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
     }
 }

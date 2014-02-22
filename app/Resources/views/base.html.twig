@@ -10,7 +10,7 @@
         <!-- Bootstrap -->
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
 
-        {% stylesheets '@REKRotesBundle/Resources/less/styles.lessphp' %}
+        {% stylesheets '@REKRotesBundle/Resources/less/styles.less' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
@@ -19,13 +19,23 @@
 
     </head>
     <body>
-        <div class="main-menu">
-            {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:mainMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
-            {{ knp_menu_render(mainMenu) }}
+
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="{{ path('home') }}" class="navbar-brand">rekarnar</a>
+                </div>
+                <div id="navbar-main">
+                    {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:mainMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
+                    {{ knp_menu_render(mainMenu) }}
+                </div>
+            </div>
         </div>
 
-        <div class="main">
-            {% block body %}{% endblock %}
+        <div class="container">
+            <div class="page-header" id="banner">
+                {% block body %}{% endblock %}
+            </div>
         </div>
 
         {% block javascripts %}{% endblock %}

@@ -4,18 +4,33 @@
 
 {% block body %}
 
-  <h1>Current rotes:</h1>
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 id="type">Current rotes</h1>
+            </div>
+        </div>
 
-  <ul class="rotes">
-      {% for rote in rotes if rote.id %}
-          <li>
-            <a href="{{ path('rote_show', {'id': rote.id}) }}">
-              {{ rote.id }}
-            </a>
-          </li>
-      {% else %}
-          <li>No ROTES man!</li>
-      {% endfor %}
-  </ul>
+        <!-- Headings -->
+
+    <div class="row">
+        <div class="col-lg-4">
+            <ul class="rotes">
+                {% for rote in rotes if rote.id %}
+                    <li class="list-group">
+                        <a href="{{ path('rote_show', {'id': rote.id}) }}" class="list-group-item">
+                            {{ rote.id }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>No ROTES man!</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock %}

@@ -31,7 +31,7 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("{id}", name="rote_show", requirements={"id" = "\d+"})
+     * @Route("/rote/{id}", name="rote_show", requirements={"id" = "\d+"})
      * @Template()
      */
     public function indexAction(Rote $rote, Request $request)
@@ -69,6 +69,18 @@ class RoteController extends Controller
     }
 
     /**
+     * @Route("/rotee/{route}", name="rote_show_e")
+     * @Template("REKRotesBundle:Rote:index.html.twig")
+     */
+    public function extraAction(Request $request)
+    {
+        die('yay');
+        return array(
+            'form' => $form->createView()
+        );
+    }
+
+    /**
      * @Route("/rote_create", name="rote_create")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_USER')")
@@ -86,8 +98,21 @@ class RoteController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($form);
+
+            // note cascade="persist" can be added to rotes too
+            // instead of this... but it wasnt working for me
+            $page = $form->getData()->getPage();
+            // $page['realPage'] = '1';
+            // $page->setRealPage(true);
+            $em->persist($page);
             $em->flush();
+
+            // and the main form
+            $em->persist($form->getData());
+            $em->flush();
+
+            // $d = $form->getData()->getPage();
+
         }
 
         return array(

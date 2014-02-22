@@ -24,6 +24,7 @@ class RoteType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'REK\RotesBundle\Entity\Rote',
+            'cascade_validation' => true, // <- also do page
         ));
     }
 

@@ -62,6 +62,7 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
             $page = new Page();
             $page->setName($pageData['name']);
             $page->setRoute($route);
+            $page->setParentId(0);
             // leave it null if not set.
             // null means always show.
             if (isset($pageData['isSecured'])) {

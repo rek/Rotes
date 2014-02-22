@@ -12,8 +12,12 @@ class PageType extends AbstractType
     {
         $builder
             ->add('name', null, array(
-                'label' => false)
-            )
+                'label' => false
+            ))
+            // ->add('parentId', 'hidden', array(
+                // 'data' => '0'
+            // ))
+            ->add('route')
         ;
 
             // 'options' => array('translation_domain' => 'FOSUserBundle'),

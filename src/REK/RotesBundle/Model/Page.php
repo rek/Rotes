@@ -10,7 +10,7 @@
 namespace REK\RotesBundle\Model;
 
 // use Doctrine\Common\Collections\Collection;
-// use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  */
@@ -24,8 +24,14 @@ abstract class Page
      */
     protected $name;
 
+    // protected $rotes;
+
     public function __construct()
     {
+
+        // set a default
+        $this->setPosition(0);
+
     }
 
     // public function __toString() {
