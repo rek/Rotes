@@ -28,7 +28,7 @@
                 <div id="navbar-main">
                     {% set mainMenu = knp_menu_get('REKRotesBundle:Builder:pagesMenu', [], {'authenticated': is_granted("ROLE_USER")}) %}
                     {{ knp_menu_render(mainMenu) }}
-                    {{ knp_menu_render('REKRotesBundle:Builder:categoryMenu') }}
+                    {{ knp_menu_render('REKRotesBundle:Builder:roteMenu') }}
                 </div>
             </div>
         </div>

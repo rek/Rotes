@@ -34,27 +34,27 @@ class Builder extends ContainerAware
         return $menu;
     }
 
-    public function categoryMenu(FactoryInterface $factory, array $options)
+    public function roteMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
         $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $categories = $em->getRepository('REK\RotesBundle\Entity\Category')
+        $rotes = $em->getRepository('REK\RotesBundle\Entity\Rote')
             ->createQueryBuilder('c')
             // ->useResultCache(true, 360)
             // ->where('c.parentId != 0')
-            ->orderBy('c.position', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;
 
         $securityContext = $this->container->get('security.context');
 
-        foreach ($categories as $cat) {
-            if ($this->okToShow($cat, $securityContext)) {
-                $menu->addChild($cat->getName(), array(
+        foreach ($rotes as $r) {
+            if ($this->okToShow($r, $securityContext)) {
+                $menu->addChild($r->getName(), array(
                     'route' => 'rote_show',
-                    'routeParameters' => array('slug' => $cat->getSlug())
+                    'routeParameters' => array('slug' => $r->getSlug())
                 ));
             }
         }

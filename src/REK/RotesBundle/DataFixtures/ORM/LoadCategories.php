@@ -29,10 +29,10 @@ class LoadCategories extends AbstractFixture implements OrderedFixtureInterface
             $cat->setName($name);
             $cat->setPosition($catData['position']);
 
-            $manager->persist($cat);
+            // $manager->persist($cat);
         }
 
-        $manager->flush();
+        // $manager->flush();
 
         // $this->addReference('pages', $pages);
     }

@@ -20,7 +20,6 @@ class RoteController extends Controller
 
     /**
      * @Route("/", name="home")
-     * @Template()
      */
     public function homeAction()
     {
@@ -30,26 +29,33 @@ class RoteController extends Controller
             'updated' => 'asc'
         ));
 
-        return array('rote' => $rote);
+        return $this->forward('REKRotesBundle:Rote:show', array(
+            'rote'  => $rote,
+        ));
+
+        // return $this->generateUrl('rote_show',array(
+            // 'slug' => $form->getData()->getCategory()->getSlug()
+        // )));
+
     }
 
     /**
      * @Route("/rote/{slug}", name="rote_show")
-     * #, @ParamConverter("category", class="REKRotesBundle:Category", options={"slug" = "slug"})
+     * #, @-ParamConverter("category", class="REKRotesBundle:Category", options={"slug" = "slug"})
      * #, requirements={"id" = "\d+"}
      * @Template
      */
-    public function editAction(Category $category, Request $request)
+    public function showAction(Rote $rote, Request $request)
     {
         // $rote = $this->getDoctrine()
         // ->getRepository('REK\RotesBundle\Entity\Rote')
         // ->find($id);
 
-        // if (!$rote) {
-        //   throw $this->createNotFoundException(
-        //       'No rote found for id '.$id
-        //   );
-        // }
+        if (!$rote) {
+          throw $this->createNotFoundException(
+              'No rote found for id '.$request->slug
+          );
+        }
 
         // manually call form,
         // remember to add:
@@ -57,16 +63,13 @@ class RoteController extends Controller
         // $form = $this->createForm(new RoteType(), $rote);
 
         // get first rote only
-        $rote = $category->getRotes()[0];
+        // $rote = $category->getRotes()[0];
 
         // give normal users a different form.
         // not the edit form
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            return $this->render(
-                'REKRotesBundle:Rote:show.html.twig',
-                array(
-                    'rote' => $rote
-                )
+            return array(
+                'rote' => $rote
             );
         }
 
@@ -87,8 +90,11 @@ class RoteController extends Controller
             $em->flush();
         }
 
-        return array(
-            'form' => $form->createView()
+        return $this->render(
+            'REKRotesBundle:Rote:edit.html.twig',
+            array(
+                'form' => $form->createView()
+            )
         );
     }
 
@@ -108,16 +114,16 @@ class RoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // convert the text into an object
-        if ($request->isMethod('POST')) {
-            $postedRote = $request->request->get('rote');
-            $cat = new Category();
-            $cat->setPosition(50);
-            $cat->setName($postedRote['category']);
-            $em->persist($cat);
-            $em->flush();
-            $postedRote['category'] = ''.$cat->getId();
-            $request->request->set('rote', $postedRote);
-        }
+        // if ($request->isMethod('POST')) {
+        //     $postedRote = $request->request->get('rote');
+        //     $cat = new Category();
+        //     $cat->setPosition(50);
+        //     $cat->setName($postedRote['category']);
+        //     $em->persist($cat);
+        //     $em->flush();
+        //     $postedRote['category'] = ''.$cat->getId();
+        //     $request->request->set('rote', $postedRote);
+        // }
 
         // bind the send data to the new rote entity
         $form->handleRequest($request);
@@ -134,9 +140,12 @@ class RoteController extends Controller
             $em->persist($form->getData());
             $em->flush();
 
-            return $this->redirect($this->generateUrl('rote_show',array(
-                'slug' => $form->getData()->getCategory()->getSlug()
-            )));
+            return $this->forward('REKRotesBundle:Rote:show', array(
+                'rote'  => $rote,
+            ));
+            // return $this->redirect($this->generateUrl('rote_show',array(
+                // 'slug' => $form->getData()->getCategory()->getSlug()
+            // )));
         }
 
         return array(

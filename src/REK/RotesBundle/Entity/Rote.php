@@ -5,6 +5,7 @@ namespace REK\RotesBundle\Entity;
 use REK\RotesBundle\Model\Rote as BaseRote;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rote
@@ -31,10 +32,31 @@ class Rote extends BaseRote
     protected $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="rotes")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @var string
+     * @Assert\NotBlank(message="Name must be set")
+     * @ORM\Column(name="name", type="string", length=100, unique=true)
      */
-    protected $category;
+    protected $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="secure", type="boolean", nullable=true)
+     */
+    private $secure;
+
+    /**
+     * @Gedmo\Translatable
+     * @Gedmo\Slug(fields={"name"},style="camel", separator="-")
+     * @ORM\Column(length=64, unique=true)
+     */
+    private $slug;
+
+    /**
+     * ORM\ManyToOne(targetEntity="Category", inversedBy="rotes")
+     * ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    // protected $category;
 
     /**
      * @Gedmo\Timestampable(on="update")
@@ -108,29 +130,6 @@ class Rote extends BaseRote
     }
 
     /**
-     * Set category
-     *
-     * @param \REK\RotesBundle\Entity\Category $category
-     * @return Rote
-     */
-    public function setCategory(\REK\RotesBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \REK\RotesBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set updated
      *
      * @param \DateTime $updated
@@ -139,7 +138,7 @@ class Rote extends BaseRote
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
@@ -152,7 +151,76 @@ class Rote extends BaseRote
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Rote
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set secure
+     *
+     * @param boolean $secure
+     * @return Rote
+     */
+    public function setSecure($secure)
+    {
+        $this->secure = $secure;
+
+        return $this;
+    }
+
+    /**
+     * Get secure
+     *
+     * @return boolean
+     */
+    public function getSecure()
+    {
+        return $this->secure;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Rote
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -26,9 +26,9 @@ abstract class Rote implements RoteInterface
     protected $message;
 
     /**
-     * @Assert\Type(type="REK\RotesBundle\Entity\Category")
+     * -@Assert\Type(type="REK\RotesBundle\Entity\Category")
      */
-    protected $category;
+    // protected $category;
 
     public function __construct()
     {

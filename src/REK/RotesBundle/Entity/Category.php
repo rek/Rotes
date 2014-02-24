@@ -61,7 +61,7 @@ class Category extends BaseCategory
     private $created;
 
     /**
-     * @ORM\OneToMany(targetEntity="Rote", mappedBy="category")
+     * ORM\OneToMany(targetEntity="Rote", mappedBy="category")
      */
     protected $rotes;
 

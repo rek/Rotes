@@ -14,10 +14,27 @@ class LoadRotesData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $rote = new Rote();
-        $rote->setMessage('This is the default message.');
+        $rotes = array(
+            "Symfony2 Notes" => array(
+                // 'secure' => 0,
+                'message' => 'This is the default message.',
+                'position' => 50
+            ),
+            "TODO" => array(
+                'message' => 'You should do some things.',
+                'position' => 50
+            ),
+        );
 
-        $manager->persist($rote);
+        foreach($rotes as $name => $roteData) {
+            $rote = new Rote();
+            $rote->setName($name);
+            // $rote->setPosition($roteData['position']);
+            $rote->setMessage($roteData['message']);
+
+            $manager->persist($rote);
+        }
+
         $manager->flush();
 
         $this->addReference('rote-1', $rote);

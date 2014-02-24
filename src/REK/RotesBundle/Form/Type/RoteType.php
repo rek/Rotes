@@ -15,13 +15,14 @@ class RoteType extends AbstractType
     {
         $builder
             ->add('message', 'textarea')
+            ->add('name', 'text')
                 // 'class' => 'REKRotesBundle:Category',
                 // 'property' => 'name',
             // ))
-            ->addEventListener(
-                FormEvents::PRE_SET_DATA,
-                array($this, 'onPreSetData')
-            )
+            // ->addEventListener(
+                // FormEvents::PRE_SET_DATA,
+                // array($this, 'onPreSetData')
+            // )
             // ?? ->get('category')->addEventListener(
             // ->addEventListener(
                 // FormEvents::POST_SUBMIT,
