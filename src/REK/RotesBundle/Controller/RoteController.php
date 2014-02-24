@@ -127,13 +127,16 @@ class RoteController extends Controller
             // note cascade="persist" can be added to rotes too
             // instead of this... but it wasnt working for me
 
-            // $page = $form->getData()->getPage();
-            // $em->persist($page);
+            // $cat = $form->getData()->getCategory();
+            // $em->persist($cat);
 
             // and the main form
             $em->persist($form->getData());
             $em->flush();
 
+            return $this->redirect($this->generateUrl('rote_show',array(
+                'slug' => $form->getData()->getCategory()->getSlug()
+            )));
         }
 
         return array(

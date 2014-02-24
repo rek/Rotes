@@ -32,12 +32,11 @@ security:
             anonymous:    true
             # perhaps remove this to test 'remember me' func
             logout:       true
-
-        remember_me:
-            key: '%secret%'
-            lifetime: 31536000 # 365 days in seconds
-            path: /
-            domain: ~ # Defaults to the current domain from $_SERVER
+            remember_me:
+                key: '%secret%'
+                lifetime: 31536000 # 365 days in seconds
+                path: /
+                domain: ~ # Defaults to the current domain from $_SERVER
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

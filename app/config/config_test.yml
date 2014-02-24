@@ -4,7 +4,9 @@ imports:
 framework:
     test: ~
     session:
-        storage_id: session.storage.mock_file
+        # storage_id: session.storage.mock_file
+        # changed as per the liip functional storage
+        storage_id: session.storage.filesystem
     profiler:
         collect: false
 
@@ -14,3 +16,17 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+# sqlite for fast testing
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_sqlite
+                path:     %kernel.cache_dir%/test.db
+
+liip_functional_test:
+    cache_sqlite_db: true
+    # fail test if page makes to many requests
+    # query_count.max_query_count: 50
