@@ -1,5 +1,6 @@
 parameters:
     rek.rotes.class: REK\RotesBundle\Form\Type\RoteType
+    rek.rotes.admin.class: REK\RotesBundle\Form\Type\RoteCreateType
 
 services:
     rotes.form.type.rote:
@@ -9,3 +10,7 @@ services:
         # need a session?
         # arguments:
             # session: @session
+    rotes.form.type.rote.admin:
+        class: "%rek.rotes.admin.class%"
+        tags:
+            - { name: form.type, alias: roteadmin }
