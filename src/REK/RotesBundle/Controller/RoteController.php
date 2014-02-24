@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use REK\RotesBundle\Entity\Rote;
-use REK\RotesBundle\Entity\Category;
+// use REK\RotesBundle\Entity\Category;
 
 class RoteController extends Controller
 {

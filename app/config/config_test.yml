@@ -24,9 +24,14 @@ doctrine:
         connections:
             default:
                 driver:   pdo_sqlite
-                path:     %kernel.cache_dir%/test.db
+                # path:     %kernel.cache_dir%/test.db
+                path:     :memory:
+                memory:   true
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: true
 
-liip_functional_test:
-    cache_sqlite_db: true
+liip_functional_test: ~
+    # cache_sqlite_db: true
     # fail test if page makes to many requests
     # query_count.max_query_count: 50
