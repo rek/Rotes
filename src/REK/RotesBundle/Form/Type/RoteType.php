@@ -12,10 +12,10 @@ class RoteType extends AbstractType
     {
         $builder
             ->add('message', 'textarea')
-            // ->add('category', 'entity', array(
-                // 'class' => 'REKRotesBundle:Category',
-                // 'property' => 'name',
-            // ))
+            ->add('category', 'entity', array(
+                'class' => 'REKRotesBundle:Category',
+                'property' => 'name',
+            ))
 
             ->add('save', 'submit')
         ;

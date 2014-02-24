@@ -34,12 +34,12 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/show/{slug}", name="rote_show")
+     * @Route("/rote/{slug}", name="rote_show")
      * #, @ParamConverter("category", class="REKRotesBundle:Category", options={"slug" = "slug"})
      * #, requirements={"id" = "\d+"}
-     * @Template()
+     * @Template
      */
-    public function showAction(Category $category, Request $request)
+    public function editAction(Category $category, Request $request)
     {
         // $rote = $this->getDoctrine()
         // ->getRepository('REK\RotesBundle\Entity\Rote')
@@ -56,7 +56,19 @@ class RoteController extends Controller
         // use REK\RotesBundle\Form\Type\RoteType;
         // $form = $this->createForm(new RoteType(), $rote);
 
+        // get first rote only
         $rote = $category->getRotes()[0];
+
+        // give normal users a different form.
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            return $this->render(
+                'REKRotesBundle:Rote:show.html.twig',
+                array(
+                    'rote' => $rote
+                )
+            );
+        }
+
 
         if (!$rote) {
             $rote = new Rote();
@@ -75,17 +87,6 @@ class RoteController extends Controller
             $em->flush();
         }
 
-        return array(
-            'form' => $form->createView()
-        );
-    }
-
-    /**
-     * @Route("/rotee/{slug}", name="rote_show_e")
-     * @Template("REKRotesBundle:Rote:index.html.twig")
-     */
-    public function extraAction(Request $request)
-    {
         return array(
             'form' => $form->createView()
         );
