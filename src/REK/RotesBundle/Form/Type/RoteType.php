@@ -15,7 +15,6 @@ class RoteType extends AbstractType
     {
         $builder
             ->add('message', 'textarea')
-            // ->add('category', 'entity', array(
                 // 'class' => 'REKRotesBundle:Category',
                 // 'property' => 'name',
             // ))
@@ -43,7 +42,7 @@ class RoteType extends AbstractType
         // If no data is passed to the form, the data is "null".
         // This should be considered a new "Rote"
         if (!$rote || null === $rote->getId()) {
-            $form->add('category', 'text');
+            $form->add('category', 'string_to_category');
         } else {
             $form->add('category', 'entity', array(
                 'class' => 'REKRotesBundle:Category',

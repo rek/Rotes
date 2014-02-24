@@ -60,6 +60,7 @@ class RoteController extends Controller
         $rote = $category->getRotes()[0];
 
         // give normal users a different form.
+        // not the edit form
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
             return $this->render(
                 'REKRotesBundle:Rote:show.html.twig',
@@ -69,11 +70,10 @@ class RoteController extends Controller
             );
         }
 
-
-        if (!$rote) {
-            $rote = new Rote();
-            $rote->setCategory($category);
-        }
+        // if (!$rote) {
+            // $rote = new Rote();
+            // $rote->setCategory($category);
+        // }
 
         // use the rote service:
         $form = $this->createForm('rote', $rote);
@@ -109,11 +109,14 @@ class RoteController extends Controller
 
         // convert the text into an object
         if ($request->isMethod('POST')) {
+            $postedRote = $request->request->get('rote');
             $cat = new Category();
-            $cat->setName($request->request->get('rote')['category']);
-            $request->request->get('rote')['category'] = $cat->getId();
+            $cat->setPosition(50);
+            $cat->setName($postedRote['category']);
             $em->persist($cat);
             $em->flush();
+            $postedRote['category'] = ''.$cat->getId();
+            $request->request->set('rote', $postedRote);
         }
 
         // bind the send data to the new rote entity
@@ -126,9 +129,6 @@ class RoteController extends Controller
 
             // $page = $form->getData()->getPage();
             // $em->persist($page);
-
-            // set a manual position for now
-            $form->getData()['position'] = 50;
 
             // and the main form
             $em->persist($form->getData());

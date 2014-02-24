@@ -14,3 +14,10 @@ services:
         class: "%rek.rotes.admin.class%"
         tags:
             - { name: form.type, alias: roteadmin }
+
+
+    rotes.type.string_to_category:
+        class: REK\RotesBundle\Form\Type\CategoryStringType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: string_to_category }

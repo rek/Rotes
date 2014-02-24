@@ -5,7 +5,7 @@ namespace REK\RotesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use REK\RotesBundle\Model\Page as BaseCategory;
+use REK\RotesBundle\Model\Category as BaseCategory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -43,9 +43,9 @@ class Category extends BaseCategory
     /**
      * @var integer
      *
-     * @ORM\Column(name="position", type="smallint")
+     * @ORM\Column(name="position", type="smallint",options={"default" = 50})
      */
-    private $position;
+    protected $position;
 
     /**
      * @var boolean

@@ -17,6 +17,14 @@ namespace REK\RotesBundle\Model;
 abstract class Category
 {
 
+    protected $position;
+
+    public function __construct()
+    {
+        $this->position = 50;
+    }
+
+
     // public function __toString()
     // {
         // return $this->getName();
