@@ -9,13 +9,18 @@ use Symfony\Component\HttpFoundation\Response;
 // use Symfony\Component\Console\Tester\ApplicationTester;
 // use Symfony\Component\Console\Output\Output;
 
-// use Symfony\Component\BrowserKit\Cookie;
-// use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\BrowserKit\Cookie;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RoteControllerTest extends WebTestCase
 {
 
     private $client = null;
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $em;
 
     public function setUp()
     {
@@ -40,60 +45,59 @@ class RoteControllerTest extends WebTestCase
             $this->client->getResponse()->getStatusCode()
         );
 
-        // or simply check that the response is a redirect to any URL
-        // $this->assertTrue($this->client->getResponse()->isRedirect());
 
         // echo $this->client->getResponse()->getContent(); die();
 
         $this->assertCount(1, $crawler->filter('html:contains("This is the default message.")'));
     }
 
-    public function testRoteContentAnnon()
+    public function testRoteContentAnon()
     {
-        // $this->client = static::createClient();
         $crawler = $this->client->request('GET', '/rote/Todo');
-    //     echo $this->client->getResponse()->getContent();die();
         $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
     }
 
-    // public function testRoteContentAdmin()
-    // {
-    //     $this->client = static::createClient();
-    //     $crawler = $this->client->request('GET', '/rote/Todo');
-    //     $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
-    //     $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
-    // }
+    public function testRoteCreateAnon()
+    {
+        $crawler = $this->client->request('GET', '/rote_create');
 
-    // public function testRoteCreateAnnon()
-    // {
-    //     $this->client = static::createClient();
-    //     $crawler = $this->client->request('GET', '/rote_create');
-    //     $this->assertCount(1, $crawler->filter('html:contains("Login")'));
-    // }
+        // login required, so it should redirect
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+        $crawler = $this->client->followRedirect();
+        $this->assertCount(1, $crawler->filter('html:contains("Login")'));
+    }
 
-    // public function testRoteCreateAdmin()
-    // {
-    //     $this->logIn();
+    public function testRoteContentAdmin()
+    {
+        $this->logIn();
+        $crawler = $this->client->request('GET', '/rote/Todo');
 
-    //     $this->client = static::createClient();
-    //     $crawler = $this->client->request('GET', '/rote_create');
-    //     $this->assertTrue($this->client->getResponse()->isSuccessful());
-    //     $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
-    // }
+        $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
+    }
 
-    // private function login() {
-    //     $this->client = static::createClient();
-    //     $session = $this->client->getContainer()->get('session');
+    public function testRoteCreateAdmin()
+    {
+        $this->logIn();
+        $crawler = $this->client->request('GET', '/rote_create');
 
-    //     $firewall = 'main';
-    //     $token = new UsernamePasswordToken('test', null, $firewall, array('ROLE_USER'));
-    //     $session->set('_security_'.$firewall, serialize($token));
-    //     $session->save();
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
+    }
 
-    //     // $cookie = new Cookie($session->getName(), $session->getId());
-    //     // $this->client->getCookieJar()->set($cookie);
+    private function login() {
+        $session = $this->client->getContainer()->get('session');
 
-    // }
+        $firewall = 'main';
+        $token = new UsernamePasswordToken('rekarnar', null, $firewall, array('ROLE_USER'));
+        $session->set('_security_'.$firewall, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+    }
+
+
 // $link = $crawler->filter('a:contains("Greet")')->eq(1)->link();
 
 // $crawler = $client->click($link);
@@ -104,9 +108,6 @@ class RoteControllerTest extends WebTestCase
 // $form['form_name[subject]'] = 'Hey there!';
 // submit the form
 // $crawler = $client->submit($form);
-
-// Assert that the response matches a given CSS selector.
-// $this->assertGreaterThan(0, $crawler->filter('h1')->count());    }
 
 // $this->assertRegExp(
     // '/Hello Fabien/',

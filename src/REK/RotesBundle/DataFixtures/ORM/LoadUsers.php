@@ -28,8 +28,8 @@ class LoadUsers extends AbstractFixture implements ContainerAwareInterface, Orde
     public function load(ObjectManager $manager)
     {
         $users = array(
-            "test" => array(
-                'email'    => 'test@test.com',
+            "rekarnar" => array(
+                'email'    => 'rekarnar@gmail.com',
                 'password' => 'test'
             ),
         );
