@@ -48,6 +48,9 @@
         "twbs/bootstrap": "3.*@dev",
         "jquery/jquery":  "1.11.*"
     },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
     "repositories": [
         {
             "type": "package",
