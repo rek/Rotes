@@ -1,5 +1,5 @@
 ## Rotes. Some notes. [![Build Status](https://travis-ci.org/rek/Rotes.png)](https://travis-ci.org/Rotes) [![Coverage Status](https://coveralls.io/repos/rek/Rotes/badge.png)](https://coveralls.io/r/rek/Rotes)
-=============
+
 Welcome to Rotes.
 
 It is a place for notes.
