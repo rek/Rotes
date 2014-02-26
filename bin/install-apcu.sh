@@ -1,15 +1,15 @@
 #!/bin/bash
 
-phpenv config-add ../app/config/test/apc.ini
+phpenv config-add app/config/test/apc.ini
 
 if [ "$TRAVIS_PHP_VERSION" < "5.5" ]
 then
-    phpenv config-add ../app/config/test/5.3.ini
+    phpenv config-add app/config/test/5.3.ini
     exit 0
 
 fi
 
-phpenv config-add ../app/config/test/5.5.ini
+phpenv config-add app/config/test/5.5.ini
 
 # this is helpful to compile extension
 sudo apt-get install autoconf
