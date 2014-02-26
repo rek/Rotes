@@ -2,20 +2,15 @@
 
 namespace REK\RotesBundle\Tests\Controller;
 
-// use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
-require_once(__DIR__ . "/../../../../../app/AppKernel.php");
-
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Tester\ApplicationTester;
-use Symfony\Component\Console\Output\Output;
+// use Symfony\Bundle\FrameworkBundle\Console\Application;
+// use Symfony\Component\Console\Tester\ApplicationTester;
+// use Symfony\Component\Console\Output\Output;
 
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-
-use REK\RotesBundle\Entity\Rote;
+// use Symfony\Component\BrowserKit\Cookie;
+// use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RoteControllerTest extends WebTestCase
 {
@@ -26,84 +21,79 @@ class RoteControllerTest extends WebTestCase
     {
         $classes = array(
             'REK\RotesBundle\DataFixtures\ORM\LoadUsers',
+            'REK\RotesBundle\DataFixtures\ORM\LoadRotes',
+            'REK\RotesBundle\DataFixtures\ORM\LoadPages'
         );
 
         $this->loadFixtures($classes);
+        $this->client = static::createClient();
     }
-
-    // Assert a specific 200 status code
-    // $this->assertEquals(
-        // Response::HTTP_OK,
-        // $client->getResponse()->getStatusCode()
-    // );
-
-// protected static $kernel;
-// protected static $container;
-
-// public static function setUpBeforeClass()
-// {
-    // self::$kernel = new \AppKernel('test', true);
-    // self::$kernel->boot();
-//
-    // self::$container = self::$kernel->getContainer();
-// }
 
     public function testHomepage()
     {
         // self::setUpBeforeClass();
-        $this->client = static::createClient();
         $crawler = $this->client->request('GET', '/');
+
+        // Assert a specific 200 status code
+        $this->assertEquals(
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
+        );
 
         // or simply check that the response is a redirect to any URL
         // $this->assertTrue($this->client->getResponse()->isRedirect());
 
-        echo $this->client->getResponse()->getContent();die;
+        // echo $this->client->getResponse()->getContent(); die();
 
         $this->assertCount(1, $crawler->filter('html:contains("This is the default message.")'));
     }
 
-    public function testRoteContentAnnon()
-    {
-        // $client = static::createClient();
-        $crawler = $this->client->request('GET', '/rote/Todo');
-        echo $this->client->getResponse()->getContent();die;
-        $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
-    }
+    // public function testRoteContentAnnon()
+    // {
+    //     $this->client = static::createClient();
+    //     $crawler = $this->client->request('GET', '/rote/Todo');
+    //     echo $this->client->getResponse()->getContent();die();
+    //     $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
+    // }
 
-    public function testRoteContentAdmin()
-    {
-        $crawler = $this->client->request('GET', '/rote/Todo');
-        $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
-    }
+    // public function testRoteContentAdmin()
+    // {
+    //     $this->client = static::createClient();
+    //     $crawler = $this->client->request('GET', '/rote/Todo');
+    //     $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
+    //     $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
+    // }
 
-    public function testRoteCreateAnnon()
-    {
-        $crawler = $this->client->request('GET', '/rote_create');
-        $this->assertCount(1, $crawler->filter('html:contains("Login")'));
-    }
+    // public function testRoteCreateAnnon()
+    // {
+    //     $this->client = static::createClient();
+    //     $crawler = $this->client->request('GET', '/rote_create');
+    //     $this->assertCount(1, $crawler->filter('html:contains("Login")'));
+    // }
 
-    public function testRoteCreateAdmin()
-    {
-        $this->logIn();
+    // public function testRoteCreateAdmin()
+    // {
+    //     $this->logIn();
 
-        $crawler = $this->client->request('GET', '/rote_create');
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
-    }
+    //     $this->client = static::createClient();
+    //     $crawler = $this->client->request('GET', '/rote_create');
+    //     $this->assertTrue($this->client->getResponse()->isSuccessful());
+    //     $this->assertGreaterThan(0, $crawler->filter('html:contains("Save")')->count());
+    // }
 
-    private function login() {
-        $session = $this->client->getContainer()->get('session');
+    // private function login() {
+    //     $this->client = static::createClient();
+    //     $session = $this->client->getContainer()->get('session');
 
-        $firewall = 'main';
-        $token = new UsernamePasswordToken('test', null, $firewall, array('ROLE_USER'));
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
+    //     $firewall = 'main';
+    //     $token = new UsernamePasswordToken('test', null, $firewall, array('ROLE_USER'));
+    //     $session->set('_security_'.$firewall, serialize($token));
+    //     $session->save();
 
-        // $cookie = new Cookie($session->getName(), $session->getId());
-        // $this->client->getCookieJar()->set($cookie);
+    //     // $cookie = new Cookie($session->getName(), $session->getId());
+    //     // $this->client->getCookieJar()->set($cookie);
 
-    }
+    // }
 // $link = $crawler->filter('a:contains("Greet")')->eq(1)->link();
 
 // $crawler = $client->click($link);

@@ -6,7 +6,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use REK\RotesBundle\Entity\Rote;
 
-class LoadRotesData extends AbstractFixture implements OrderedFixtureInterface
+class LoadRotes extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
