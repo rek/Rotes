@@ -14,17 +14,13 @@ before_script:
  # - composer require symfony/http-foundation:${SYMFONY_VERSION}
  - wget http://getcomposer.org/composer.phar
 
+ # install dependencys
  - ./bin/install-apcu.sh
+
+ # run main script
  - php composer.phar install --dev --no-interaction
 
 script:
- # - phpunit -c app
- # - bin/atoum --test-all
-
- # - mkdir -p build/logs
- # - phpunit --coverage-clover build/logs/clover.xml
-
- # - phpunit -c app --coverage-clover app/cache/test/clover.xml
   - phpunit -c app --coverage-clover app/logs/clover.xml
 
 after_script:

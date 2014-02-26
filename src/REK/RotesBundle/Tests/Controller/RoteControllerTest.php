@@ -48,13 +48,13 @@ class RoteControllerTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('html:contains("This is the default message.")'));
     }
 
-    // public function testRoteContentAnnon()
-    // {
-    //     $this->client = static::createClient();
-    //     $crawler = $this->client->request('GET', '/rote/Todo');
+    public function testRoteContentAnnon()
+    {
+        // $this->client = static::createClient();
+        $crawler = $this->client->request('GET', '/rote/Todo');
     //     echo $this->client->getResponse()->getContent();die();
-    //     $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
-    // }
+        $this->assertCount(1, $crawler->filter('html:contains("You should do some things.")'));
+    }
 
     // public function testRoteContentAdmin()
     // {
