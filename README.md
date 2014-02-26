@@ -1,14 +1,14 @@
 Rotes. Some notes.
 ========================
 
-### Status
-[![Build Status](https://travis-ci.org/rek/Rotes/Rotes.png)](https://travis-ci.org/Rotes/Rotes)
+### Status [![Build Status](https://travis-ci.org/rek/Rotes.png)](https://travis-ci.org/Rotes)
+[![Coverage Status](https://coveralls.io/repos/rek/Rotes/badge.png?branch=master)](https://coveralls.io/r/rek/Rotes?branch=master)
 
 Welcome to Rotes.
 
 It is a place for notes.
 
-== History
+## History
 
 This project was inspired by my desire to learn Symfony2
 
