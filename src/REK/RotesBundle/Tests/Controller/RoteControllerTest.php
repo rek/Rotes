@@ -36,7 +36,6 @@ class RoteControllerTest extends WebTestCase
 
     public function testHomepage()
     {
-        // self::setUpBeforeClass();
         $crawler = $this->client->request('GET', '/');
 
         // Assert a specific 200 status code
@@ -44,7 +43,6 @@ class RoteControllerTest extends WebTestCase
             Response::HTTP_OK,
             $this->client->getResponse()->getStatusCode()
         );
-
 
         // echo $this->client->getResponse()->getContent(); die();
 
