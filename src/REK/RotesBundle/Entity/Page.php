@@ -40,7 +40,7 @@ class Page extends BasePage
      * @var boolean
      *
      * @ORM\Column(name="parentId", type="smallint")
-     * ////@ORM\OneToMany(targetEntity="Page", mappedBy="id")
+     * -@-ORM\OneToMany(targetEntity="Page", mappedBy="id")
      */
     protected $parentId;
 
@@ -50,6 +50,13 @@ class Page extends BasePage
      * @ORM\Column(name="secure", type="boolean", nullable=true)
      */
     private $secure;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="showpage", type="boolean", nullable=true)
+     */
+    protected $showpage;
 
     /**
      * @var integer
@@ -187,5 +194,28 @@ class Page extends BasePage
     public function getSecure()
     {
         return $this->secure;
+    }
+
+    /**
+     * Set showpage
+     *
+     * @param boolean $showpage
+     * @return Page
+     */
+    public function setShowpage($showpage)
+    {
+        $this->showpage = $showpage;
+    
+        return $this;
+    }
+
+    /**
+     * Get showpage
+     *
+     * @return boolean 
+     */
+    public function getShowpage()
+    {
+        return $this->showpage;
     }
 }

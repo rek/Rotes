@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use REK\RotesBundle\Entity\Rote;
-// use REK\RotesBundle\Entity\Category;
+use REK\RotesBundle\Form\Type\SettingsType;
 
 class RoteController extends Controller
 {
@@ -33,7 +33,7 @@ class RoteController extends Controller
             'rote'  => $rote,
         ));
 
-        // return $this->generateUrl('rote_show',array(
+        // $this->generateUrl('rote_show',array(
             // 'slug' => $form->getData()->getCategory()->getSlug()
         // )));
 
@@ -152,5 +152,39 @@ class RoteController extends Controller
             'form' => $form->createView()
         );
 
+    }
+
+    /**
+     * @Route("/settings")
+     * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
+     * @Template
+     */
+    public function settingsAction(Request $request)
+    {
+        $page = $this->getDoctrine()
+            ->getRepository('REK\RotesBundle\Entity\Page')
+            ->findOneBy(array('name'=>'Register'))
+        ;
+
+        $form = $this->createForm(new SettingsType(), $page);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($page);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'Your changes were saved!'
+            );
+        }
+
+        return array(
+            'form' => $form->createView()
+        );
     }
 }

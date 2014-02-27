@@ -25,9 +25,9 @@ doctrine:
                 path:     %kernel.cache_dir%/test.db
                 # path:     :memory:
                 # memory:   true
-    # orm:
-        # auto_generate_proxy_classes: true
-        # auto_mapping: true
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: true
 
 web_profiler:
     toolbar: false

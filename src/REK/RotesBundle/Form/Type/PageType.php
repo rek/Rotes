@@ -34,6 +34,6 @@ class PageType extends AbstractType
 
     public function getName()
     {
-        return 'rote';
+        return 'page';
     }
 }
