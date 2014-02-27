@@ -155,7 +155,7 @@ class RoteController extends Controller
     }
 
     /**
-     * @Route("/settings")
+     * @Route("/settings", name="settings")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_USER')")
      * @Template
