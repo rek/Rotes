@@ -25,7 +25,21 @@
                 {{ form(form) }}
             </div>
 
-            <a class="psw" href="{{ url('fos_user_change_password') }}">Change Password</a>
+            <div class="col-lg-4">
+              <h2>Extra options</h2>
+              <ul>
+                <li>
+                  <a class="pswd" href="{{ url('fos_user_change_password') }}">Change Password</a>
+                </li>
+                <li>
+                  <a class="profile" href="{{ url('fos_user_profile_edit') }}">Edit profile</a>
+                </li>
+                <li>
+                  <a class="profile" href="{{ url('fos_user_profile_show') }}">View profile</a>
+                </li>
+
+              </ul>
+            </div>
 
       </div>
 
