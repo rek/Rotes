@@ -49,16 +49,17 @@ assetic:
 
         # sass:    ~
         # compass: ~
-        # lessphp:
-            # apply_to: "\.lessphp$"
+        lessphp:
+            apply_to: "\.less$"
             # Formatter options: compressed, lessjs, classic
-            # formatter: "compressed"
-            # preserve_comments: false
+            formatter: "compressed"
+            preserve_comments: false
+            file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             # presets:
                 # my_variable: "#000"
-        less:
-            node: /usr/bin/node
-            node_paths: [/usr/lib/node_modules]
+        # less:
+            # node: /usr/bin/node
+            # node_paths: [/usr/lib/node_modules]
             # apply_to: "\.less$"
 
 # Doctrine Configuration
@@ -96,7 +97,7 @@ fos_user:
 
 braincrafted_bootstrap:
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.0.min.js
-    less_filter: less # "less", "lessphp" or "none"
+    less_filter: lessphp # "less", "lessphp" or "none"
     auto_configure:
         assetic: true
         twig: true

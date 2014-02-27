@@ -34,6 +34,10 @@ class LoadPages extends AbstractFixture implements OrderedFixtureInterface
                 'name' => 'Create Rote',
                 'secure' => true
             ),
+            "settings" => array(
+                'name' => 'Settings',
+                'secure' => true
+            ),
             "fos_user_security_logout" => array(
                 'name' => 'Logout',
                 'secure' => true

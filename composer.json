@@ -30,11 +30,10 @@
         "knplabs/knp-menu":"dev-master",
         "knplabs/knp-menu-bundle":"dev-master",
 
-        "leafo/lessphp": "dev-master",
-
         "braincrafted/bootstrap-bundle": "~2.0@alpha",
-        "twbs/bootstrap": "3.*@dev",
-        "jquery/jquery":  "1.11.*"
+        "twbs/bootstrap": "3.0.*",
+        "jquery/jquery":  "1.11.*",
+        "leafo/lessphp": "dev-master"
     },
     "require-dev": {
         "liip/functional-test-bundle": "dev-master",
@@ -51,6 +50,10 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:cbekir/lessphp.git"
         }
     ],
     "scripts": {
