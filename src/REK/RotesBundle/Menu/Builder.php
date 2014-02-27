@@ -25,7 +25,7 @@ class Builder extends ContainerAware
         $securityContext = $this->container->get('security.context');
 
         foreach ($pages as $page) {
-            if ($this->okToShow($page, $securityContext)) {
+            if ($this->okToShow($page, $securityContext) && $page->getShowpage()) {
                 // $route = $this->container->get('router')->match('/'.$page->getRoute());
                 $menu->addChild($page->getName(), array('route' => $page->getRoute()));
             }
