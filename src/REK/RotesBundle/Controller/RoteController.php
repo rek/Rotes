@@ -65,9 +65,11 @@ class RoteController extends Controller
         // get first rote only
         // $rote = $category->getRotes()[0];
 
+        $skip = $request->query->get('preview');
+
         // give normal users a different form.
         // not the edit form
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+        if ($skip || false === $this->get('security.context')->isGranted('ROLE_USER')) {
             return array(
                 'rote' => $rote
             );
@@ -93,7 +95,8 @@ class RoteController extends Controller
         return $this->render(
             'REKRotesBundle:Rote:edit.html.twig',
             array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'rote' => $rote
             )
         );
     }

@@ -12,6 +12,9 @@
             <div class="col-lg-12">
                 <div class="page-header">
                     <h1 id="type">{{ rote.name }}</h1>
+                    {% if is_granted('ROLE_USER') %}
+                        <a href="{{ path('rote_show', { 'slug': rote.slug }) }}">Edit mode</a>
+                    {% endif %}
                 </div>
             </div>
 
