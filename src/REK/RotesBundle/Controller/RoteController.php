@@ -140,7 +140,7 @@ class RoteController extends Controller
             $em->persist($form->getData());
             $em->flush();
 
-            return $this->forward('REKRotesBundle:Rote:show', array(
+            return $this->redirect('REKRotesBundle:Rote:show', array(
                 'rote'  => $rote,
             ));
             // return $this->redirect($this->generateUrl('rote_show',array(
@@ -181,6 +181,9 @@ class RoteController extends Controller
                 'notice',
                 'Your changes were saved!'
             );
+
+            // redirect to remove post from header
+            return $this->redirect('REKRotesBundle:Rote:settings');
         }
 
         return array(
