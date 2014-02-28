@@ -29,6 +29,7 @@
         "craue/formflow-bundle": "~2.0",
         "knplabs/knp-menu":"dev-master",
         "knplabs/knp-menu-bundle":"dev-master",
+        "knplabs/knp-markdown-bundle": "1.2.*@dev",
 
         "braincrafted/bootstrap-bundle": "~2.0@alpha",
         "twbs/bootstrap": "3.0.*",
